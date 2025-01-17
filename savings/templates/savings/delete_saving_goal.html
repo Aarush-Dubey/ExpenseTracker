@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block title %}Delete Saving Goal{% endblock %}
+
+{% block content %}
+<h2>Are you sure you want to delete the saving goal: "{{ saving_goal.name }}"?</h2>
+
+<form method="POST">
+    {% csrf_token %}
+    <button type="submit" class="btn btn-danger">Yes, Delete</button>
+    <a href="{% url 'saving_goals_list' %}" class="btn btn-secondary">Cancel</a>
+</form>
+{% endblock %}

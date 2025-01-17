@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block title %}Deposit to Saving Goal{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2 class="text-center mb-4">Deposit to Saving Goal</h2>
+    
+    <form method="POST" class="shadow p-4 rounded">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="id_amount">Deposit Amount</label>
+            {{ form.amount }}
+        </div>
+        <div class="form-group d-flex justify-content-between">
+            <button type="submit" class="btn btn-primary">Deposit</button>
+            <a href="{% url 'saving_goals_list' %}" class="btn btn-secondary">Back to Saving Goals</a>
+        </div>
+    </form>
+</div>
+{% endblock %}
+

@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block title %}Add New Expense{% endblock %}
+
+{% block content %}
+<h2>Add New Expense</h2>
+
+<form method="post">
+    {% csrf_token %}
+    
+    {{ expense_form.as_p }}
+
+
+
+    <button type="submit" class="btn btn-primary">Add Expense</button>
+    <a href="{% url 'expense_list' %}" class="btn btn-secondary">Back</a>
+</form>
+
+<script>
+function handleCategoryChange(selectElement) {
+    if (selectElement.value === 'add_new_category') {
+        window.location.href = "{% url 'add_category' %}";
+    }
+}
+
+</script>
+{% endblock %}

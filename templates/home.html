@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="jumbotron text-center shadow p-4 rounded">
+        <h1 class="display-4">Welcome to the Expense Tracker</h1>
+        <p class="lead">Track your expenses and manage your saving goals with ease.</p>
+        <hr class="my-4">
+        {% if user.is_authenticated %}
+            <p class="mt-3">Hello, {{ user.username }}! You are logged in.</p>
+            <a class="btn btn-primary btn-lg mt-3" href="{% url 'expense_list' %}" role="button">View Expenses</a>
+            <a class="btn btn-secondary btn-lg mt-3" href="{% url 'saving_goals_list' %}" role="button">View Saving Goals</a>
+        {% else %}
+            <p class="mt-3">Please <a href="{% url 'login' %}">login</a> to access your expenses and saving goals.</p>
+            <a class="btn btn-primary btn-lg mt-3" href="{% url 'login' %}" role="button">Login</a>
+            <a class="btn btn-secondary btn-lg mt-3" href="{% url 'register' %}" role="button">Sign Up</a>
+        {% endif %}
+    </div>
+
+    <div class="row mt-5">
+        <div class="col-md-4">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <h5 class="card-title">Track Your Expenses</h5>
+                    <p class="card-text">Easily add and categorize your expenses to stay on top of your finances.</p>
+                    <a href="{% url 'expense_list' %}" class="btn btn-primary">Start Tracking</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <h5 class="card-title">Set Saving Goals</h5>
+                    <p class="card-text">Set and achieve your financial goals with our intuitive saving goals feature.</p>
+                    <a href="{% url 'add_saving_goal' %}" class="btn btn-secondary">Create Goal</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <h5 class="card-title">Analyze Your Spending</h5>
+                    <p class="card-text">Get insights into your spending habits and make informed financial decisions.</p>
+                    <a href="{% url 'expense_list' %}" class="btn btn-primary">Analyze Now</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

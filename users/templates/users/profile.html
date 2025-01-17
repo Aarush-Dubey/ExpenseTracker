@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block title %}Profile{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <h2 class="card-title text-center">Profile</h2>
+                    <p class="card-text text-center">
+                        <img src="{{ user.profile_picture.url }}" class="rounded-circle" alt="Profile Picture" width="150" height="150">
+                    </p>
+                    <p class="card-text"><strong>Username:</strong> {{ user.username }}</p>
+                    <p class="card-text"><strong>Email:</strong> {{ user.email }}</p>
+                
+                    <form method="POST" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        {{ form.as_p }}
+                        <button type="submit" class="btn btn-primary btn-block">Update Profile</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
